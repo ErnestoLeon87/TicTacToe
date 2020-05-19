@@ -8,11 +8,9 @@ class Player:
     def make_move(self, move: int, field: list):
 
         if self.player_one.get_turn():  # Checking if it is player turn
-
             if len(self.field) < move:  # Check if it is a valid move
                 raise Exception("This is not a valid move")
             else:
-
                 if self.field[move-1] == " ":  # Check if that move have been done
                     self.field[move-1] = self.mark
                     self.set_turn(False)
