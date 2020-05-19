@@ -5,18 +5,20 @@ class Player:
         self._mark = mark
         self.move = 0
 
-    def make_move(self, move: int, field: list):
+    def place_mark(self, move: int, field: list):
 
-        if self.player_one.get_turn():  # Checking if it is player turn
-            if len(self.field) < move:  # Check if it is a valid move
+        if self.get_turn():  # Checking if it is player turn
+            if len(field) < move:  # Check if it is a valid move
                 raise Exception("This is not a valid move")
             else:
-                if self.field[move-1] == " ":  # Check if that move have been done
-                    self.field[move-1] = self.mark
+                if field[move-1] == " ":  # Check if that move have been done
+                    field[move-1] = self._mark
                     self.set_turn(False)
                     return
                 else:
                     print("Invalid move")
+        else:
+            print("It is not my turn yet")
 
     def get_turn(self):
         return self.turn
