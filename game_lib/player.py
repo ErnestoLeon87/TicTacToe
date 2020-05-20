@@ -1,12 +1,11 @@
 class Player:
-    def __init__(self, name, mark=None, turn=False):
-        self.name = name
+    def __init__(self, mark=None, turn=False):
+        self.name = None
         self.turn = False
         self._mark = mark
         self._move = 0
 
     def place_mark(self, move: int, field: list):
-
         if self.get_turn():  # Checking if it is player turn
             if len(field) < move:  # Check if it is a valid move
                 raise Exception("This is not a valid move")
@@ -38,3 +37,9 @@ class Player:
 
     def get_move(self):
         return self._move
+
+    def get_name(self):
+        return self.name
+
+    def set_name(self, new_name):
+        self.name = new_name

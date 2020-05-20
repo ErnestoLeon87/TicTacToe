@@ -3,20 +3,57 @@ from game_lib.field import Field
 
 
 class Game_Controller:
-    def __init__(self, name_one: str, one_mark: str, name_two: str, two_mark: str, field=Field):
-        self.field = field
-        self.player_one = Player(name_one)
-        self.player_two = Player(name_two)
-        self.player_one.set_mark(one_mark)
-        self.player_two.set_mark(two_mark)
+    def __init__(self):
+        self.field = Field()
+        self.player_one = Player()
+        self.player_two = Player()
 
-    def setup_game(self, first_move_name: str):
-        if self.player_one.name == first_move_name:
-            self.player_one.set_turn(True)
-        elif self.player_two.name == first_move_name:
-            self.player_two.set_turn(True)
-        else:
-            print("Please give a right name to start")
+    def setup_game(self):
+
+        #  Setup player ONE name and mark
+        one_name = input("Please enter first player name: ")
+        self.player_one.set_name(one_name)
+        self.__setup_mark(one_name)
+
+        # Setup player TWO name and mark
+        two_name = input("Please enter second player name: ")
+        self.player_two.set_name(two_name)
+        self.__setup_mark(two_name)
+
+        # Setup who play first
+        self.__setup_first_move()
+
+    def __setup_mark(self, name):
+        valid_mark = False
+        while not valid_mark:
+            one_mark = input(
+                'Please give a mark for {}: '.format(name))
+            try:
+                if self.player_one.name == name:
+                    self.player_one.set_mark(one_mark)
+                    valid_mark = True
+                if self.player_two.name == name:
+                    self.player_two.set_mark(one_mark)
+                    valid_mark = True
+            except Exception as ex:
+                print("Invalid mark.")
+
+    def __setup_first_move(self):
+        right_name = False
+        while not right_name:
+            first_move_name = input("First move name? ")
+            if self.player_one.name == first_move_name:
+                self.player_one.set_turn(True)
+                right_name = True
+            elif self.player_two.name == first_move_name:
+                self.player_two.set_turn(True)
+                right_name = True
+            else:
+                print("Please give a right name to start ",
+                      self.player_one.name, " or ", self.player_two.name)
+
+    def check_field_wins(self, parameter_list):
+        pass
 
     def run_game(self):
         pass
