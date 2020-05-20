@@ -55,5 +55,8 @@ class Game_Controller:
     def check_field_wins(self, parameter_list):
         pass
 
-    def run_game(self):
-        pass
+    def play_game(self):
+        # check for user turn and for play it
+        some_win = False
+        while not some_win:
+            pass
