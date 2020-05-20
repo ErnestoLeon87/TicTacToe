@@ -1,7 +1,7 @@
 class Player:
-    def __init__(self, name, mark: str, turn=True):
+    def __init__(self, name, mark: str, turn=False):
         self.name = name
-        self.turn = True
+        self.turn = False
         self._mark = mark
         self.move = 0
 
@@ -13,7 +13,7 @@ class Player:
             else:
                 if field[move-1] == " ":  # Check if that move have been done
                     field[move-1] = self._mark
-                    self.set_turn(False)
+                    # self.set_turn(False)
                     return
                 else:
                     print("Invalid move")

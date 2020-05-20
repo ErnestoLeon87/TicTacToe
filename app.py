@@ -9,9 +9,9 @@ if __name__ == "__main__":
 
     game = Game_Controller(player_one, player_two)
 
-    player_one.make_move(1, game.field)
+    player_one.place_mark(1, game.field)
 
-    player_two.make_move(2, game.field)
+    player_two.place_mark(2, game.field)
 
     game.display_move()
 
