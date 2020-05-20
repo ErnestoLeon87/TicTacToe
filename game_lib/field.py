@@ -1,5 +1,5 @@
-class Game_field:
-    def __init__(self, player_one: Player, player_two: Player):
+class Field:
+    def __init__(self):
         self.field = [" ", " ", " ",
                       " ", " ", " ",
                       " ", " ", " "]

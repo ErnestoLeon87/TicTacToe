@@ -1,9 +1,9 @@
 class Player:
-    def __init__(self, name, mark: str, turn=False):
+    def __init__(self, name, mark=None, turn=False):
         self.name = name
         self.turn = False
         self._mark = mark
-        self.move = 0
+        self._move = 0
 
     def place_mark(self, move: int, field: list):
 
@@ -13,6 +13,7 @@ class Player:
             else:
                 if field[move-1] == " ":  # Check if that move have been done
                     field[move-1] = self._mark
+                    self._move += 1
                     # self.set_turn(False)
                     return
                 else:
@@ -34,3 +35,6 @@ class Player:
             raise Exception("This is not a valid mark.")
         else:
             self._mark = a_mark
+
+    def get_move(self):
+        return self._move
