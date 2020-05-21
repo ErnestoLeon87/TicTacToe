@@ -16,9 +16,9 @@ class Player:
                     # self.set_turn(False)
                     return
                 else:
-                    print("Invalid move")
+                    raise Exception("Invalid move")
         else:
-            print("It is not my turn yet")
+            raise Exception("It is not my turn yet")
 
     def get_turn(self):
         return self.turn
