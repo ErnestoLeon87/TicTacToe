@@ -56,8 +56,30 @@ class Game_Controller:
                 print("Please give a right name to start ",
                       self.player_one.name, " or ", self.player_two.name)
 
-    def check_field_wins(self, parameter_list):
-        pass
+    def check_win(self, moves: list):
+        # HORIZONTAL
+        if moves[0] == 1 and moves[1] == 1 and moves[2] == 1:
+            return True
+        if moves[3] == 1 and moves[4] == 1 and moves[5] == 1:
+            return True
+        if moves[6] == 1 and moves[7] == 1 and moves[8] == 1:
+            return True
+
+        # VERTICAL
+        if moves[0] == 1 and moves[3] == 1 and moves[6] == 1:
+            return True
+        if moves[1] == 1 and moves[4] == 1 and moves[7] == 1:
+            return True
+        if moves[2] == 1 and moves[5] == 1 and moves[8] == 1:
+            return True
+
+        # CROSS
+        if moves[0] == 1 and moves[4] == 1 and moves[8] == 1:
+            return True
+        if moves[2] == 1 and moves[4] == 1 and moves[6] == 1:
+            return True
+
+        return False
 
     def play(self):
         # check for user turn and for play it
@@ -71,6 +93,13 @@ class Game_Controller:
                     o_mark = int(
                         input("Please {} place your mark: ".format(self.player_one.name)))
                     self.player_one.place_mark(o_mark, self.field.field)
+                    self.player_one_moves[o_mark-1] = 1
+
+                    some_win = self.check_win(self.player_one_moves)
+                    if some_win:
+                        print("Player {} WON!!! in {} moves".format(
+                            self.player_one.name, self.player_one.get_num_move()))
+                        self.field.show_moves()
 
                     self.player_one.set_turn(False)
                     self.player_two.set_turn(True)
@@ -80,6 +109,13 @@ class Game_Controller:
                     t_mark = int(
                         input("Please {} place your mark: ".format(self.player_two.name)))
                     self.player_two.place_mark(t_mark, self.field.field)
+                    self.player_two_moves[t_mark-1] = 1
+
+                    some_win = self.check_win(self.player_two_moves)
+                    if some_win:
+                        print("Player {} WON!!! in {} moves".format(
+                            self.player_two.name, self.player_two.get_num_move()))
+                        self.field.show_moves()
 
                     self.player_two.set_turn(False)
                     self.player_one.set_turn(True)

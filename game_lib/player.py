@@ -35,7 +35,7 @@ class Player:
         else:
             self._mark = a_mark
 
-    def get_move(self):
+    def get_num_move(self):
         return self._move
 
     def get_name(self):
