@@ -34,7 +34,7 @@ class Game_Controller:
                 if self.player_one.name == name:
                     self.player_one.set_mark(one_mark)
                     valid_mark = True
-                if self.player_two.name == name:
+                if self.player_one.get_mark() != one_mark:
                     self.player_two.set_mark(one_mark)
                     valid_mark = True
             except Exception as ex:
