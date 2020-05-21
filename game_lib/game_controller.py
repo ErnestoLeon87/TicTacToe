@@ -37,6 +37,8 @@ class Game_Controller:
                 if self.player_one.get_mark() != one_mark:
                     self.player_two.set_mark(one_mark)
                     valid_mark = True
+                elif self.player_one.get_mark() == one_mark:
+                    print("This simbol is in use.")
             except Exception as ex:
                 print("Invalid mark.")
 
